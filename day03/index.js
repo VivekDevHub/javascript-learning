@@ -191,7 +191,7 @@ function program32() {
 }
 
 function program33() {
-  let num = 7; 
+  let num = 7;
   if (num % 2 === 0) {
     console.log("Even number");
   } else {
@@ -200,8 +200,8 @@ function program33() {
 }
 
 function program34() {
-   let a = 15;
-   let b = 20;
+  let a = 15;
+  let b = 20;
 
   if (a > b) {
     console.log("Greater number is:", a);
@@ -213,7 +213,7 @@ function program34() {
 }
 
 function program35() {
-    let score = 85;
+  let score = 85;
 
   if (score >= 90) {
     console.log("Excellent");
@@ -224,4 +224,85 @@ function program35() {
   }
 }
 
-console.log(program35());
+function program36() {
+  let year = 2024;
+  if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+    console.log(year, "is a Leap Year");
+  } else {
+    console.log(year, "is NOT a Leap Year");
+  }
+}
+
+function program37() {
+  let ch = "a";
+  ch = ch.toLowerCase();
+
+  if (ch === "a" || ch === "e" || ch === "i" || ch === "o" || ch === "u") {
+    console.log("Vowel");
+  } else {
+    console.log("Consonant");
+  }
+}
+
+function program38() {
+  let num1 = 10;
+  let num2 = 20;
+  let num3 = 30;
+
+  if (num1 === num2 && num2 === num3) {
+    console.log(num1, num2, num3, "this are equal number");
+  } else if (num1 > num2 && num1 > num3) {
+    console.log("largest number is -->", num1);
+  } else if (num2 > num1 && num2 > num3) {
+    console.log("largest number is -->", num2);
+  } else {
+    console.log("largest number is -->", num3);
+  }
+}
+
+function program39() {
+  let Password = prompt("Enter passeorf here")
+  if (Password === `admin123`) {
+    console.log('is valid');
+  } else { 
+    console.log('is invalid');
+    
+  }
+}
+
+function program48() {
+ let arr = [3,7,2,9,5];
+ let largest = arr[0];
+
+ for(let num of arr) {
+  if(num>largest){
+    largest=num;
+  }
+ }
+ console.log(largest);
+ 
+
+}
+
+function program49() {
+  let num=5;
+  for(let i=1; i<=num; i++){
+    let row="";
+    for(let j=0; j<i; j++){
+      row = row+'*'
+    }
+    console.log(row);
+    
+  }
+}
+
+function program50() {
+  let arr = [10, 20, 30, 40];
+let sum = 0;
+for (const elem of arr) {
+    sum = sum + elem
+}
+console.log(sum);
+}
+
+console.log(program50());
