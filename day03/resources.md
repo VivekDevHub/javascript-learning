@@ -6,8 +6,11 @@ Basic Console Usage
 "My name is and ".
 
 2. Perform the arithmetic calculation 45 * 2 - 10 and print the result.
+
 3. Retrieve and print the current year using JavaScript’s Date object.
+
 4. Store your first name and last name separately and print your full name.
+
 5. Create a variable, print it, update it, and print again.
 6. Print a custom error message using console.error().
 7. Store a number and print its square.
@@ -57,7 +60,7 @@ Else Needs Improvement
 38. Find largest of three numbers.
 39. Password validation (admin123).
 40. Check divisibility by 3 and 5.
-
+`
 
 More Loop Basics
 41. Sum from 1 to 100.
@@ -77,3 +80,6 @@ More Loop Basics
 
 50. Find sum of array:
 [10, 20, 30, 40]
+
+
+
