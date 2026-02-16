@@ -1,0 +1,3 @@
+- Methods
+- functions
+- diffrence in both

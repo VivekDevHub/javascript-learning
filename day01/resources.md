@@ -24,6 +24,5 @@ Day16 - 30 program string
 Day17 - JSON, Stringify, Parse
 Day18 - HOF
 Day19 - Methods vs Functions
-Day20 - Async JS
-Day21 - DOM
-Day22 - Event Listener  
+Day20 - DOM
+Day21 - DOM TASK 
