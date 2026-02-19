@@ -26,3 +26,6 @@ Day18 - HOF
 Day19 - Methods vs Functions
 Day20 - DOM
 Day21 - DOM TASK 
+Day22 - Math(), appendchild, create element, set, get attribute
+Day23 - DOM using Math Function Task Asiignment
+Day24 - 
