@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+
+#box {
+  height: 250px;
+  width: 250px;
+  background-color: crimson;
+}
+#imgbheem {
+  height: 280px;
+  width: 220px;
+  transition: all 0.1s linear; 
+
+  position: absolute;
+}
