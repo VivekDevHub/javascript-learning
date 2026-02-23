@@ -25,3 +25,23 @@
 // });
 
 //************************. VIRTUAL PIANO  *************************************
+
+var body = document.body;
+
+body.addEventListener("keydown", function (event) {
+  let key = event.key.toUpperCase();
+  let audio = document.querySelector(`#${key}`);
+  if (audio) {
+    audio.currentTime = 0;
+    audio.play();
+  }
+
+  let keyDiv = document.querySelector(`.key[data-key="${key}"]`);
+  if (keyDiv) {
+    keyDiv.classList.add("active");
+
+    setTimeout(() => {
+      keyDiv.classList.remove("active");
+    }, 150);
+  }
+});

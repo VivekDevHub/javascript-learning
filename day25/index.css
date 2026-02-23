@@ -19,7 +19,40 @@ body {
 #imgbheem {
   height: 280px;
   width: 220px;
-  transition: all 0.1s linear; 
+  transition: all 0.1s linear;
 
   position: absolute;
+}
+
+#piano {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 50px;
+}
+
+.key {
+  width: 80px;
+  height: 200px;
+  background: white;
+  margin: 8px;
+  border-radius: 5px;
+  color: black;
+  font-size: 20px;
+  line-height: 200px;
+  cursor: pointer;
+  transition: 0.2s;
+  user-select: none;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.key.active {
+  background: yellow;
+  transform: scale(1.1);
+}
+#h1 {
+  text-align: center;
+  padding: 50px;
 }
