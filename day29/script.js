@@ -167,5 +167,4 @@ cars.forEach(function (elem) {
 });
 
 var main = document.querySelector("main");
-
 main.innerHTML = sum;
