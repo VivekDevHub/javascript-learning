@@ -27,5 +27,9 @@ Day19 - Methods vs Functions
 Day20 - DOM
 Day21 - DOM TASK 
 Day22 - Math(), appendchild, create element, set, get attribute
-Day23 - DOM using Math Function Task Asiignment
-Day24 - 
+Day23 - Intermediate DOM TASK
+Day24 - Mixed Questions 
+Day25 - DOM EVENT DETAILS (GAME, PIANO, MUSIC PLAYER)
+Day26 - Digital Clock Mini Dom Project
+Day27 - Custom Navbar
+Day28 - ADD REMOVE FRIEND MINI PROJECT DOM
