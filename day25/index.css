@@ -5,54 +5,98 @@
 }
 
 body {
-  height: 100%;
-  width: 100%;
-  background-color: black;
+  background: #111;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Title */
+#h1 {
+  text-align: center;
   color: white;
+  font-size: 48px;
+  padding: 40px;
+  text-shadow: 0 0 15px #fff9;
 }
 
-#box {
-  height: 250px;
-  width: 250px;
-  background-color: crimson;
-}
-#imgbheem {
-  height: 280px;
-  width: 220px;
-  transition: all 0.1s linear;
-
-  position: absolute;
+.piano-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 #piano {
+  position: relative;
+  display: flex;
+  padding: 30px 20px;
+  background: #222;
+  border-radius: 20px;
+  box-shadow: 0 0 30px #000;
+}
+
+/* White Keys */
+.key.white {
+  width: 90px;
+  height: 300px;
+  background: linear-gradient(180deg, #fff, #ddd);
+  border: 2px solid #000;
+  border-radius: 0 0 8px 8px;
+  margin: 0 3px;
+  color: black;
+  font-size: 22px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  align-content: center;
-  margin-top: 50px;
-}
-
-.key {
-  width: 80px;
-  height: 200px;
-  background: white;
-  margin: 8px;
-  border-radius: 5px;
-  color: black;
-  font-size: 20px;
-  line-height: 200px;
+  align-items: flex-end;
+  padding-bottom: 10px;
   cursor: pointer;
-  transition: 0.2s;
-  user-select: none;
-  text-align: center;
-  text-transform: uppercase;
+  position: relative;
+  box-shadow: inset -3px -8px 10px rgba(0, 0, 0, 0.2);
+  transition: 0.1s;
 }
 
-.key.active {
-  background: yellow;
-  transform: scale(1.1);
-}
-#h1 {
+/* Black Keys */
+.key.black {
+  width: 60px;
+  height: 180px;
+  background: linear-gradient(180deg, #333, #000);
+  position: absolute;
+  top: 0;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 0 0 6px 6px;
+  box-shadow:
+    inset -4px -6px 8px rgba(255, 255, 255, 0.05),
+    0 4px 10px rgba(0, 0, 0, 0.7);
+  transition: 0.1s;
   text-align: center;
-  padding: 50px;
+}
+
+/* Press Animation */
+.key.white.active {
+  transform: translateY(6px);
+  background: #ccc;
+}
+
+.key.black.active {
+  transform: translateY(4px);
+  background: #111;
+}
+
+/* BLACK KEY POSITIONS */
+.key.black[data-key="W"] {
+  left: 85px;
+}
+.key.black[data-key="E"] {
+  left: 180px;
+}
+
+.key.black[data-key="T"] {
+  left: 280px;
+}
+.key.black[data-key="Y"] {
+  left: 470px;
+}
+.key.black[data-key="U"] {
+  left: 565px;
 }
