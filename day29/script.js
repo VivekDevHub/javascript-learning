@@ -125,7 +125,6 @@ var cars = [
   },
 ];
 
-
 var sum = "";
 
 cars.forEach(function (elem) {
