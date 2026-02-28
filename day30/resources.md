@@ -1,0 +1,8 @@
+- BLINKIT CRUD USING DOM
+
+
+Make a inventory management project with good UI and features (CRUD)
+Add update feature
+use localstorage as well
+category should be dropdown
+should contain more than 5 properties
