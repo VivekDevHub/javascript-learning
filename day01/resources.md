@@ -33,3 +33,4 @@ Day25 - DOM EVENT DETAILS (GAME, PIANO, MUSIC PLAYER)
 Day26 - Digital Clock Mini Dom Project
 Day27 - Custom Navbar
 Day28 - ADD REMOVE FRIEND MINI PROJECT DOM
+Day29 - Dynamic Car JavaScript DOM Projects 
