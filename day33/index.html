@@ -16,11 +16,11 @@
       <header>
         <div class="logo">
           <span class="logo-icon">💎</span>
-          <h1 class="h1">FinanceFlow</h1>
+          <h1>FinanceFlow</h1>
         </div>
         <div class="balance-card">
-          <p>TOTAL BALANCE</p>
-          <h2 class="h2"  id="total-balance">$0.00</h2>
+          <p>Total Balance</p>
+          <h2 id="total-balance">$0.00</h2>
         </div>
       </header>
 
@@ -29,15 +29,15 @@
         <div class="stat-item income">
           <!-- <div class="stat-icon">↑</div> -->
           <div class="stat-info">
-            <span class="income">INCOME</span>
-            <h3 class="h3" id="total-income">$0.00</h3>
+            <span>Income</span>
+            <h3 id="total-income">$0.00</h3>
           </div>
         </div>
         <div class="stat-item expense">
           <!-- <div class="stat-icon">↓</div> -->
           <div class="stat-info">
-            <span class="expense">EXPENSE</span>
-            <h3 class="h3" id="total-expense">$0.00</h3>
+            <span>Expense</span>
+            <h3 id="total-expense">$0.00</h3>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
       <!-- Controls -->
       <div class="controls">
         <div class="search-bar">
-          <input type="text" id="search-input" placeholder="Search transactions..." />
+          <input type="text" id="search" placeholder="Search transactions..." />
         </div>
         <button class="btn-add" id="openModal">+ Add Transaction</button>
       </div>
@@ -53,11 +53,11 @@
       <!-- Transaction List -->
       <div class="transaction-section">
         <div class="section-header">
-          <h2>RECENT TRANSACTIONS</h2>
+          <h2>Recent Transactions</h2>
           <div class="filter-btns">
-            <button class="filter-btn active" data-filter="all">ALL</button>
-            <button class="filter-btn" data-filter="income">INCOME</button>
-            <button class="filter-btn" data-filter="expense">EXPENSES</button>
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="income">Income</button>
+            <button class="filter-btn" data-filter="expense">Expenses</button>
           </div>
         </div>
         <ul id="transaction-list" class="transaction-list">
@@ -71,11 +71,11 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2>New Transaction</h2>
-          <button class="close-btn" id="closeModal">&times;</button>
+          <button class="close-btn" id="close-btn">&times;</button>
         </div>
         <form id="transaction-form">
           <div class="form-group">
-            <label class="label">Description</label>
+            <label for="text">Description</label>
             <input
               type="text"
               id="text"
@@ -84,7 +84,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="label">Amount ($)</label>
+            <label for="amount">Amount ($)</label>
             <input
               type="number"
               id="amount"
@@ -94,17 +94,9 @@
             />
           </div>
           <div class="form-group">
-            <label class="label">Type</label>
+            <label>Type</label>
             <div class="type-selector">
-              <button type="button" class="type-btn active" data-type="income">
-                Income
-              </button>
-              <button type="button" class="type-btn" data-type="expense">
-                Expense
-              </button>
-            </div>
-            <!-- <div class="type-selector">
-              <label class="radio-label">
+              <label class="radio-label active">
                 <input
                   type="radio"
                   name="transaction-type"
@@ -117,20 +109,20 @@
                 <input type="radio" name="transaction-type" value="expense" />
                 <span class="custom-radio">Expense</span>
               </label>
-            </div> -->
+            </div>
           </div>
           <div class="form-group">
-            <label class="label">Category</label>
+            <label for="category">Category</label>
             <select id="category">
-              <option value="salary">Salary</option>
-              <option value="food">Food</option>
-              <option value="entertainment">Entertainment</option>
-              <option value="shopping">Shopping</option>
-              <option value="utilities">Utilities</option>
-              <option value="other">Other</option>
+              <option class="opt" value="salary">Salary</option>
+              <option class="opt" value="food">Food</option>
+              <option class="opt" value="entertainment">Entertainment</option>
+              <option class="opt" value="shopping">Shopping</option>
+              <option class="opt" value="utilities">Utilities</option>
+              <option class="opt" value="other">Other</option>
             </select>
           </div>
-          <button type="submit" class="btn-submit">Save Transaction</button>
+          <button type="submit" class="btn-submit btn-add">Save Transaction</button>
         </form>
       </div>
     </div>

@@ -12,12 +12,10 @@ const text = $('#text');
 const amount = $('#amount');
 const modal = $('#modalOverlay');
 const openModalBtn = $('#openModal');
-const closeModalBtn = $('#closeModal');
-const searchInput = $('#search-input');
+const closeModalBtn = $('#close-btn');
+const searchInput = $('#search');
 const filterBtns = $$('.filter-btn');
-const typeButtons = $$('.type-btn');
 
-// Category Icons
 const categoryIcons = {
     salary: '💰',
     food: '🍔',
@@ -30,40 +28,19 @@ const categoryIcons = {
 // Initial State
 let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 let currentFilter = 'all';
-let selectedType = 'income';
 
-// ==========================
-// TYPE TOGGLE
-// ==========================
-typeButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        typeButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        selectedType = button.dataset.type;
-    });
-});
-
-// ==========================
-// ADD TRANSACTION
-// ==========================
 function addTransaction(e) {
-    e.preventDefault();
 
-    const value = parseFloat(amount.value);
+    const type = $('input[name="transaction-type"]:checked').value;
 
-    if (!text.value.trim() || isNaN(value)) return;
-
-    const finalAmount =
-        selectedType === 'expense'
-            ? -Math.abs(value)
-            : Math.abs(value);
+    const category = $('#category').value;
 
     const transaction = {
-        id: Date.now(),
-        text: text.value.trim(),
-        amount: finalAmount,
-        type: selectedType,
-        category: $('#category').value,
+        id: Math.floor(Math.random() * 100000000),
+        text: text.value,
+        amount: amount.value,
+        type: type,
+        category: category,
         date: new Date().toLocaleDateString()
     };
 
@@ -72,129 +49,93 @@ function addTransaction(e) {
     init();
 
     form.reset();
-    selectedType = 'income';
-    typeButtons.forEach(btn => btn.classList.remove('active'));
-    typeButtons[0].classList.add('active');
-
     modal.classList.remove('active');
 }
 
-// ==========================
-// REMOVE TRANSACTION
-// ==========================
 function removeTransaction(id) {
-    transactions = transactions.filter(t => t.id !== id);
+    transactions = transactions.filter(t => t.id != id);
     updateLocalStorage();
     init();
 }
 
-// ==========================
-// LOCAL STORAGE
-// ==========================
 function updateLocalStorage() {
     localStorage.setItem('transactions', JSON.stringify(transactions));
 }
 
-// ==========================
-// UPDATE TOTALS
-// ==========================
+// Calculate Totals
 function updateValues() {
+    const balanceText = balance.innerText;
+    let currentBal = parseFloat(balanceText);
+
     let total = 0;
     let inc = 0;
     let exp = 0;
 
-    transactions.forEach(t => {
-        total += t.amount;
-        if (t.amount > 0) inc += t.amount;
-        else exp += t.amount;
-    });
-
+    for (let i = 0; i < transactions.length; i++) {
+        const amt = parseFloat(transactions[i].amount);
+        if (transactions[i].type == 'income') inc += amt;
+        else exp += amt;
+    }
+    
+    total = inc - exp;
     balance.innerText = `$${total.toFixed(2)}`;
     income.innerText = `$${inc.toFixed(2)}`;
     expense.innerText = `$${Math.abs(exp).toFixed(2)}`;
 }
 
-// ==========================
-// RENDER TRANSACTIONS
-// ==========================
+// Render Transactions
 function renderTransactions() {
     list.innerHTML = '';
 
-    let filtered = [...transactions];
+    let filtered = transactions;
 
-    // Search Filter
-    const query = searchInput.value.toLowerCase();
+    // Filter Search
+    const query = searchInput.value;
     if (query) {
         filtered = filtered.filter(t =>
-            t.text.toLowerCase().includes(query)
+            t.text.toLowerCase().includes(query.toLowerCase())
         );
     }
 
-    // Type Filter
     if (currentFilter !== 'all') {
         filtered = filtered.filter(t => t.type === currentFilter);
     }
 
     filtered.forEach(transaction => {
-        const sign = transaction.amount < 0 ? '-' : '+';
-        const itemClass =
-            transaction.amount < 0
-                ? 'amount-expense'
-                : 'amount-income';
-
+        const sign = transaction.type == 'expense' ? '-' : '+';
+        const itemClass = transaction.type == 'expense' ? 'amount-expense' : 'amount-income';
         const item = document.createElement('li');
-        item.classList.add('transaction-item');
 
+        item.classList.add('transaction-item');
         item.innerHTML = `
-            <div class="item-icon">
-                ${categoryIcons[transaction.category] || '📦'}
-            </div>
+            <div class="item-icon">${categoryIcons[transaction.category] || '📦'}</div>
             <div class="item-details">
                 <p>${transaction.text}</p>
                 <span>${transaction.date}</span>
             </div>
             <div class="item-amount ${itemClass}">
-                ${sign}$${Math.abs(transaction.amount).toFixed(2)}
+                ${sign}$${Math.abs(transaction.amount)}
             </div>
-            <button class="delete-btn">
+            <button class="delete-btn" onclick="removeTransaction(${transaction.id})">
                 🗑️
             </button>
         `;
-
-        // Delete button event
-        item.querySelector('.delete-btn')
-            .addEventListener('click', () =>
-                removeTransaction(transaction.id)
-            );
 
         list.appendChild(item);
     });
 }
 
-// ==========================
-// INIT
-// ==========================
 function init() {
     renderTransactions();
     updateValues();
 }
 
-// ==========================
-// EVENTS
-// ==========================
 form.addEventListener('submit', addTransaction);
-
-openModalBtn.addEventListener('click', () =>
-    modal.classList.add('active')
-);
-
-closeModalBtn.addEventListener('click', () =>
-    modal.classList.remove('active')
-);
+openModalBtn.addEventListener('click', () => modal.classList.add('active'));
+closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
 
 window.addEventListener('click', (e) => {
-    if (e.target === modal)
-        modal.classList.remove('active');
+    if (e.target === modal) modal.classList.remove('active');
 });
 
 searchInput.addEventListener('input', renderTransactions);
@@ -208,5 +149,15 @@ filterBtns.forEach(btn => {
     });
 });
 
-// Start App
 init();
+
+const radios = document.querySelectorAll('input[name="transaction-type"]');
+
+radios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        document.querySelectorAll('.radio-label')
+            .forEach(label => label.classList.remove('active'));
+
+        radio.closest('.radio-label').classList.add('active');
+    });
+});
