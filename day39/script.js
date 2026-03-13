@@ -86,4 +86,55 @@
 // getData();
 
 
-// 13. 
+// 15. Write an async function that waits for a Promise that resolves after **1 second**.
+// async function oneSecond() {
+//     await new Promise (resolve => setTimeout(resolve,1000))
+//     console.log("1 second phases ...");
+
+// }
+// oneSecond()
+
+// 16.Write an async function that fetches data and prints `"Finished fetching"` after the data is received
+
+// async function fetchData() {
+//   const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+  
+//   const data = await response.json();
+  
+//   console.log(data);
+//   console.log("Finished fetching");
+// }
+
+// fetchData();
+
+
+// ********************* ERROR HANDLING ******************************************
+// 17. Write a `try/catch` block that handles an error from `JSON.parse()
+// try {
+//     const jsonString = {"name":"Vivek"};
+//     const data =JSON.parse(jsonString);
+//     console.log(data);
+    
+// } catch (error) {
+//       console.log("Invalid JSON:", error.message);
+// }
+
+// 18. Create a function that throws an error `"Invalid input
+// function checkInput(value) {
+//   if (!value) {
+//     throw new Error("Invalid input");
+//   }
+//   console.log("Valid input:", value);
+// }
+// checkInput(""); 
+
+// 20. Write a `try/catch/finally` example where the finally block prints `"Always runs"`.
+// try {
+//   console.log("Trying...");
+//   throw new Error("Test error");
+// } catch (error) {
+//   console.log("Caught error");
+// } finally {
+//   console.log("Always runs");
+// }
+
